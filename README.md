@@ -13,7 +13,7 @@
 - Python 3.9.10, библиотеки: <code>asyncio</code>, <code>os</code>, <code>random</code>, <code>time</code>, <code>uuid</code>, <code>aiohttp</code>, <code>sys</code>, <code>logging</code>
 ### Установка
 - Чтобы использовать скрипт, установите все необходимые зависимости следующим образом: <code>pip install -r requirements.txt</code>
-### Характеристики 
+### Функционал 
 | Функция  | Наличие |
 | ------------- | ------------- |
 | Неограниченная генерация ключей  | ✅  |
