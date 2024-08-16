@@ -20,7 +20,8 @@ games = {
     2: {'title': 'Chain Cube 2048', 'token': 'd1690a07-3780-4068-810f-9b5bbf2931b2', 'promo_id': 'b4170868-cef0-424f-8eb9-be0622e8e8e3'},
     3: {'title': 'My Clone Army', 'token': '74ee0b5b-775e-4bee-974f-63e7f4d5bacb', 'promo_id': 'fe693b26-b342-4159-8808-15e3ff7f8767'},
     4: {'title': 'Train Miner', 'token': '82647f43-3f87-402d-88dd-09a90025313f', 'promo_id': 'c4480ac7-e178-4973-8061-9ed5b2e17954'},
-    5: {'title': 'Merge Away', 'token' : '8d1cc2ad-e097-4b86-90ef-7a27e19fb833', 'promo_id': 'dc128d28-c45b-411c-98ff-ac7726fbaea4'}
+    5: {'title': 'Merge Away', 'token' : '8d1cc2ad-e097-4b86-90ef-7a27e19fb833', 'promo_id': 'dc128d28-c45b-411c-98ff-ac7726fbaea4'},
+    6: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c'}
 }
 
 INTERVAL = 20
