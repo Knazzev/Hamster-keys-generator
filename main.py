@@ -18,13 +18,12 @@ logger = logging.getLogger(__name__)
 games = {
     1: {'title': 'Riding Extreme 3D', 'token': 'd28721be-fd2d-4b45-869e-9f253b554e50', 'promo_id': '43e35910-c168-4634-ad4f-52fd764a843f'},
     2: {'title': 'Chain Cube 2048', 'token': 'd1690a07-3780-4068-810f-9b5bbf2931b2', 'promo_id': 'b4170868-cef0-424f-8eb9-be0622e8e8e3'},
-    3: {'title': 'My Clone Army', 'token': '74ee0b5b-775e-4bee-974f-63e7f4d5bacb', 'promo_id': 'fe693b26-b342-4159-8808-15e3ff7f8767'},
-    4: {'title': 'Train Miner', 'token': '82647f43-3f87-402d-88dd-09a90025313f', 'promo_id': 'c4480ac7-e178-4973-8061-9ed5b2e17954'},
-    5: {'title': 'Merge Away', 'token' : '8d1cc2ad-e097-4b86-90ef-7a27e19fb833', 'promo_id': 'dc128d28-c45b-411c-98ff-ac7726fbaea4'},
-    6: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c'},
-    7: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71'}, 
-    8: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6'},
-    9: {'title': 'Mud Racing', 'token': '8814a785-97fb-4177-9193-ca4180ff9da8', 'promo_id': '8814a785-97fb-4177-9193-ca4180ff9da8'}
+    3: {'title': 'Train Miner', 'token': '82647f43-3f87-402d-88dd-09a90025313f', 'promo_id': 'c4480ac7-e178-4973-8061-9ed5b2e17954'},
+    4: {'title': 'Merge Away', 'token' : '8d1cc2ad-e097-4b86-90ef-7a27e19fb833', 'promo_id': 'dc128d28-c45b-411c-98ff-ac7726fbaea4'},
+    5: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c'},
+    6: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71'}, 
+    7: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6'},
+    8: {'title': 'Mud Racing', 'token': '8814a785-97fb-4177-9193-ca4180ff9da8', 'promo_id': '8814a785-97fb-4177-9193-ca4180ff9da8'}
 }
 
 INTERVAL = 20
