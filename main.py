@@ -23,7 +23,8 @@ games = {
     5: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c'},
     6: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71'}, 
     7: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6'},
-    8: {'title': 'Mud Racing', 'token': '8814a785-97fb-4177-9193-ca4180ff9da8', 'promo_id': '8814a785-97fb-4177-9193-ca4180ff9da8'}
+    8: {'title': 'Mud Racing', 'token': '8814a785-97fb-4177-9193-ca4180ff9da8', 'promo_id': '8814a785-97fb-4177-9193-ca4180ff9da8'},
+    9: {'title': 'Cafe Dash', 'token': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11', 'promo_id': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11'}
 }
 
 INTERVAL = 20
