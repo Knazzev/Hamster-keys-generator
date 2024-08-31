@@ -16,17 +16,16 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 games = {
-    1: {'title': 'Chain Cube 2048', 'token': 'd1690a07-3780-4068-810f-9b5bbf2931b2', 'promo_id': 'b4170868-cef0-424f-8eb9-be0622e8e8e3'},
-    2: {'title': 'Train Miner', 'token': '82647f43-3f87-402d-88dd-09a90025313f', 'promo_id': 'c4480ac7-e178-4973-8061-9ed5b2e17954'},
-    3: {'title': 'Merge Away', 'token' : '8d1cc2ad-e097-4b86-90ef-7a27e19fb833', 'promo_id': 'dc128d28-c45b-411c-98ff-ac7726fbaea4'},
-    4: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c'},
-    5: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71'}, 
-    6: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6'},
-    7: {'title': 'Cafe Dash', 'token': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11', 'promo_id': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11'},
-    8: {'title': 'Zoopolis', 'token': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'promo_id': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b'},
+    1: {'title': 'Chain Cube 2048', 'token': 'd1690a07-3780-4068-810f-9b5bbf2931b2', 'promo_id': 'b4170868-cef0-424f-8eb9-be0622e8e8e3', 'interval': 25, 'max_attempts': 20},
+    2: {'title': 'Train Miner', 'token': '82647f43-3f87-402d-88dd-09a90025313f', 'promo_id': 'c4480ac7-e178-4973-8061-9ed5b2e17954', 'interval': 20, 'max_attempts': 15},
+    3: {'title': 'Merge Away', 'token': '8d1cc2ad-e097-4b86-90ef-7a27e19fb833', 'promo_id': 'dc128d28-c45b-411c-98ff-ac7726fbaea4', 'interval': 20, 'max_attempts': 25},
+    4: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c', 'interval': 20, 'max_attempts': 20},
+    5: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'interval': 20, 'max_attempts': 20}, 
+    6: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'interval': 20, 'max_attempts': 20},
+    7: {'title': 'Cafe Dash', 'token': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11', 'promo_id': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11', 'interval': 20, 'max_attempts': 20},
+    8: {'title': 'Zoopolis', 'token': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'promo_id': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'interval': 20, 'max_attempts': 20},
+    9: {'title': 'Gangs Wars', 'token': 'b6de60a0-e030-48bb-a551-548372493523', 'promo_id': 'c7821fa7-6632-482c-9635-2bd5798585f9', 'interval': 40, 'max_attempts': 20}
 }
-
-INTERVAL = 20
 
 def choose_language():
     print("1: Русский\n2: English")
@@ -61,7 +60,7 @@ async def authenticate(session, client_id, app_token, retries=5):
                 logger.info(msg)
                 return data['clientToken']
         except aiohttp.ClientResponseError as e:
-            msg = f"Authentication failed on attempt {attempt}: {await e.response.json()}" if language == 'EN' else f"Аутентификация не удалась на попытке {attempt}: {await e.response.json()}"
+            msg = f"Authentication failed on attempt {attempt}: {e.message}" if language == 'EN' else f"Аутентификация не удалась на попытке {attempt}: {e.message}"
             logger.error(msg)
         except Exception as e:
             msg = f"Unexpected error on attempt {attempt}: {str(e)}" if language == 'EN' else f"Неожиданная ошибка на попытке {attempt}: {str(e)}"
@@ -82,10 +81,21 @@ async def record_event(session, client_token, promo_id):
             data = await response.json()
             return data.get('hasCode', False)
     except aiohttp.ClientResponseError as e:
-        msg = f"Error recording event: {await e.response.json()}" if language == 'EN' else f"Ошибка при регистрации события: {await e.response.json()}"
+        error_msg = "Unknown error"
+        if e.status == 400:
+            try:
+                error_data = await e.response.json()
+                error_msg = error_data.get('error', 'Bad Request')
+            except Exception:
+                error_msg = 'Bad Request'
+        msg = f"Error recording event: {error_msg}" if language == 'EN' else f"Ошибка при регистрации события: {error_msg}"
         logger.warning(msg)
         return False
-
+    except Exception as e:
+        msg = f"Unexpected error while recording event: {str(e)}" if language == 'EN' else f"Неожиданная ошибка при регистрации события: {str(e)}"
+        logger.error(msg)
+        return False
+    
 async def get_promo_code(session, client_token, promo_id):
     url = 'https://api.gamepromo.io/promo/create-code'
     payload = {'promoId': promo_id}
@@ -101,7 +111,7 @@ async def get_promo_code(session, client_token, promo_id):
         logger.error(msg)
         return None
 
-async def key_generation(app_token, promo_id):
+async def key_generation(app_token, promo_id, interval, max_attempts):
     client_id = await generate_client_id()
     msg = f"Generated client ID: {client_id}" if language == 'EN' else f"Сгенерирован ID клиента: {client_id}"
     logger.info(msg)
@@ -111,10 +121,10 @@ async def key_generation(app_token, promo_id):
         if not client_token:
             return None
 
-        for i in range(1, 12):
-            msg = f"Event {i}/11 for {client_id}" if language == 'EN' else f"Событие {i}/11 для {client_id}"
+        for i in range(1, max_attempts + 1):
+            msg = f"Event {i}/{max_attempts} for {client_id}" if language == 'EN' else f"Событие {i}/{max_attempts} для {client_id}"
             logger.info(msg)
-            await asyncio.sleep(INTERVAL * (random.random() / 3 + 1))
+            await asyncio.sleep(interval * (random.random() / 3 + 1))
             if await record_event(session, client_token, promo_id):
                 break
 
@@ -132,16 +142,19 @@ async def loading_animation():
 
 async def run_key_generation(selected_game, num_keys):
     game = games[selected_game]
-    msg = f"Starting key generation for {game['title']}" if language == 'EN' else f"Запуск генерации ключей для {game['title']}"
-    logger.info(msg)
+    app_token = game['token']
+    promo_id = game['promo_id']
+    interval = game['interval']
+    max_attempts = game['max_attempts']
 
     loading_task = asyncio.create_task(loading_animation())
-    tasks = [key_generation(game['token'], game['promo_id']) for _ in range(num_keys)]
-    keys = await asyncio.gather(*tasks)
+    tasks = [key_generation(app_token, promo_id, interval, max_attempts) for _ in range(num_keys)]
+    results = await asyncio.gather(*tasks)
     loading_task.cancel()
     sys.stdout.write("\r")
 
-    valid_keys = [key for key in keys if key]
+    valid_keys = [key for key in results if key]
+
     if valid_keys:
         msg = f"Keys generated for {game['title']}:" if language == 'EN' else f"Сгенерированные ключи для {game['title']}:"
         logger.info(msg)
@@ -160,17 +173,25 @@ def save_keys(keys, game_title):
     msg = f"Keys saved to file {file_name}" if language == 'EN' else f"Ключи сохранены в файл {file_name}"
     logger.info(msg)
 
-def main():
+async def main():
     print("Select a game:" if language == 'EN' else "Выберите игру:")
     for k, v in games.items():
         print(f"{k}: {v['title']}")
     selected_game = int(input("Enter the game number: " if language == 'EN' else "Введите номер игры: "))
+
+    if selected_game == 9:
+        msg = ("Key generation for Gangs Wars takes longer than for other games ~8 minutes."
+               if language == 'EN'
+               else "Генерация ключей для Gangs Wars занимает больше времени, чем на другие игры ~8 мин.")
+        print(msg)
+
     num_keys = int(input("Enter the number of keys to generate: " if language == 'EN' else "Введите количество ключей для генерации: "))
 
     msg = f"Starting generation of {num_keys} key(s) for {games[selected_game]['title']}" if language == 'EN' else f"Запуск генерации {num_keys} ключей для {games[selected_game]['title']}"
     logger.info(msg)
-    asyncio.run(run_key_generation(selected_game, num_keys))
+
+    await run_key_generation(selected_game, num_keys)
     input("Press Enter to exit." if language == 'EN' else "Нажмите Enter, чтобы выйти.")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
