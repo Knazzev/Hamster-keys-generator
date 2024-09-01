@@ -29,7 +29,7 @@ echo.
 echo Installation complete.
 echo You can now run your Python script or execute the CMD file again to run it.
 echo.
-echo To run the script, type: python hamster_keys.py
+echo To run the script, type: python main.py
 echo To execute this CMD file again, simply run it again.
 echo.
 
