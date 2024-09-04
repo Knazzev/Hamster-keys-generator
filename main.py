@@ -22,9 +22,8 @@ games = {
     4: {'title': 'Twerk Race 3D', 'token': '61308365-9d16-4040-8bb0-2f4a4c69074c',  'promo_id': '61308365-9d16-4040-8bb0-2f4a4c69074c', 'interval': 20, 'max_attempts': 20},
     5: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'interval': 20, 'max_attempts': 20}, 
     6: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'interval': 20, 'max_attempts': 20},
-    7: {'title': 'Cafe Dash', 'token': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11', 'promo_id': 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11', 'interval': 20, 'max_attempts': 20},
-    8: {'title': 'Zoopolis', 'token': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'promo_id': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'interval': 20, 'max_attempts': 20},
-    9: {'title': 'Gangs Wars', 'token': 'b6de60a0-e030-48bb-a551-548372493523', 'promo_id': 'c7821fa7-6632-482c-9635-2bd5798585f9', 'interval': 40, 'max_attempts': 20}
+    7: {'title': 'Zoopolis', 'token': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'promo_id': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'interval': 20, 'max_attempts': 20},
+    8: {'title': 'Fluff Crusade', 'token': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'promo_id': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'interval': 30, 'max_attempts': 20}
 }
 
 def choose_language():
@@ -179,10 +178,10 @@ async def main():
         print(f"{k}: {v['title']}")
     selected_game = int(input("Enter the game number: " if language == 'EN' else "Введите номер игры: "))
 
-    if selected_game == 9:
-        msg = ("Key generation for Gangs Wars takes longer than for other games ~8 minutes."
+    if selected_game == 8:
+        msg = ("Key generation for Fluff Crusade takes longer than for other games ~8 minutes."
                if language == 'EN'
-               else "Генерация ключей для Gangs Wars занимает больше времени, чем на другие игры ~8 мин.")
+               else "Генерация ключей для Fluff Crusade занимает больше времени, чем на другие игры ~8 мин.")
         print(msg)
 
     num_keys = int(input("Enter the number of keys to generate: " if language == 'EN' else "Введите количество ключей для генерации: "))
