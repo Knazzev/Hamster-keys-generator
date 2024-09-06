@@ -23,7 +23,9 @@ games = {
     5: {'title': 'Polysphere', 'token': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'promo_id': '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71', 'interval': 20, 'max_attempts': 20}, 
     6: {'title': 'Mow and Trim', 'token': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'promo_id': 'ef319a80-949a-492e-8ee0-424fb5fc20a6', 'interval': 20, 'max_attempts': 20},
     7: {'title': 'Zoopolis', 'token': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'promo_id': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'interval': 20, 'max_attempts': 20},
-    8: {'title': 'Fluff Crusade', 'token': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'promo_id': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'interval': 30, 'max_attempts': 20}
+    8: {'title': 'Fluff Crusade', 'token': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'promo_id': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'interval': 30, 'max_attempts': 20},
+    9: {'title': 'Tile Trio', 'token': 'e68b39d2-4880-4a31-b3aa-0393e7df10c7', 'promo_id': 'e68b39d2-4880-4a31-b3aa-0393e7df10c7', 'interval': 20, 'max_attempts': 20},
+    10: {'title': 'Stone Age', 'token': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af', 'promo_id': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af', 'interval': 20, 'max_attempts': 20}
 }
 
 def choose_language():
