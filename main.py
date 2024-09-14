@@ -25,7 +25,9 @@ games = {
     7: {'title': 'Zoopolis', 'token': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'promo_id': 'b2436c89-e0aa-4aed-8046-9b0515e1c46b', 'interval': 20, 'max_attempts': 20},
     8: {'title': 'Fluff Crusade', 'token': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'promo_id': '112887b0-a8af-4eb2-ac63-d82df78283d9', 'interval': 30, 'max_attempts': 20},
     9: {'title': 'Tile Trio', 'token': 'e68b39d2-4880-4a31-b3aa-0393e7df10c7', 'promo_id': 'e68b39d2-4880-4a31-b3aa-0393e7df10c7', 'interval': 20, 'max_attempts': 20},
-    10: {'title': 'Stone Age', 'token': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af', 'promo_id': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af', 'interval': 20, 'max_attempts': 20}
+    10: {'title': 'Stone Age', 'token': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af', 'promo_id': '04ebd6de-69b7-43d1-9c4b-04a6ca3305af', 'interval': 20, 'max_attempts': 20},
+    11: {'title': 'Bouncemasters', 'token': 'bc72d3b9-8e91-4884-9c33-f72482f0db37', 'promo_id': 'bc72d3b9-8e91-4884-9c33-f72482f0db37', 'interval': 20, 'max_attempts': 20},
+    12: {'title': 'Hide Ball', 'token': '4bf4966c-4d22-439b-8ff2-dc5ebca1a600', 'promo_id': '4bf4966c-4d22-439b-8ff2-dc5ebca1a600', 'interval': 40, 'max_attempts': 20}
 }
 
 def choose_language():
@@ -180,10 +182,10 @@ async def main():
         print(f"{k}: {v['title']}")
     selected_game = int(input("Enter the game number: " if language == 'EN' else "Введите номер игры: "))
 
-    if selected_game == 8:
-        msg = ("Key generation for Fluff Crusade takes longer than for other games ~8 minutes."
+    if selected_game == 12:
+        msg = ("Key generation for Hide Ball takes longer than for other games ~8 minutes."
                if language == 'EN'
-               else "Генерация ключей для Fluff Crusade занимает больше времени, чем на другие игры ~8 мин.")
+               else "Генерация ключей для Hide Ball занимает больше времени, чем на другие игры ~8 мин.")
         print(msg)
 
     num_keys = int(input("Enter the number of keys to generate: " if language == 'EN' else "Введите количество ключей для генерации: "))
